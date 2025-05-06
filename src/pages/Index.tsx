@@ -1,24 +1,20 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import HeroBanner from '@/components/HeroBanner';
+import PromoBanner from '@/components/PromoBanner';
 import FeaturedProducts from '@/components/FeaturedProducts';
-import CategoryShowcase from '@/components/CategoryShowcase';
-import SustainabilitySection from '@/components/SustainabilitySection';
-import Newsletter from '@/components/Newsletter';
+import CategoryNavigation from '@/components/CategoryNavigation';
 import Footer from '@/components/Footer';
 import ChatBubble from '@/components/ChatBubble';
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-lumenhaus-white">
+    <div className="flex flex-col min-h-screen bg-mixvinicius-gray">
       <Navbar />
       <main>
-        <HeroBanner />
+        <PromoBanner />
+        <CategoryNavigation />
         <FeaturedProducts />
-        <CategoryShowcase />
-        <SustainabilitySection />
-        <Newsletter />
       </main>
       <Footer />
       <ChatBubble />

@@ -4,22 +4,22 @@ import ProductCard from './ProductCard';
 import { products } from '@/data/products';
 
 const FeaturedProducts = () => {
-  // Take only the first 4 products for featured section
-  const featuredProducts = products.slice(0, 4);
+  // Take only the featured products
+  const featuredProducts = products.filter(product => product.isFeatured);
   
   return (
-    <section className="py-16 bg-lumenhaus-white">
+    <section className="py-12 bg-mixvinicius-gray">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
-            Produtos em Destaque
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-nunito font-bold mb-3 text-mixvinicius-green-dark">
+            Produtos Fresquinhos
           </h2>
-          <p className="text-lumenhaus-black/70 max-w-2xl mx-auto">
-            Itens cuidadosamente selecionados para transformar seu espaço com elegância e sustentabilidade.
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Selecionados especialmente para você, entregues com rapidez e qualidade.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {featuredProducts.map((product) => (
             <ProductCard 
               key={product.id}
@@ -28,7 +28,8 @@ const FeaturedProducts = () => {
               price={product.price}
               image={product.image}
               category={product.category}
-              isNew={product.isNew}
+              unit={product.unit}
+              isPromo={product.isPromo}
             />
           ))}
         </div>

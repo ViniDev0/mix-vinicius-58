@@ -53,13 +53,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// LumenHaus custom colors
-				lumenhaus: {
-					white: '#F7F8F7',
-					gray: '#D8D5D2',
-					green: '#A8B5A2',
-					brown: '#CBB89D',
-					black: '#2E2E2E'
+				// MixVinicius custom colors
+				mixvinicius: {
+					green: '#4CAF50',
+					'green-dark': '#2E7D32',
+					orange: '#FF9800',
+					gray: '#F5F5F5',
+					white: '#FFFFFF'
 				}
 			},
 			borderRadius: {
@@ -68,9 +68,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				'playfair': ['"Playfair Display"', 'serif'],
-				'inter': ['Inter', 'sans-serif'],
-				'cormorant': ['"Cormorant Garamond"', 'serif']
+				'nunito': ['Nunito', 'sans-serif'],
+				'opensans': ['Open Sans', 'sans-serif'],
+				'montserrat': ['Montserrat', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {

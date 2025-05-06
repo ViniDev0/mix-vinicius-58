@@ -1,124 +1,106 @@
 
 import React, { useState } from 'react';
-import { ShoppingCart, Search, User, Menu } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 
 const Navbar = () => {
-  const [showSearch, setShowSearch] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-lumenhaus-white shadow-subtle">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className="bg-white sticky top-0 z-50 shadow-sm">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <h1 className="text-2xl font-playfair font-bold text-lumenhaus-black">
-              Lumen<span className="text-lumenhaus-green">Haus</span>
-            </h1>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            <Link to="/" className="text-lumenhaus-black hover:text-lumenhaus-green transition-colors">
-              Home
-            </Link>
-            <Link to="/produtos" className="text-lumenhaus-black hover:text-lumenhaus-green transition-colors">
-              Produtos
-            </Link>
-            <Link to="/colecoes" className="text-lumenhaus-black hover:text-lumenhaus-green transition-colors">
-              Coleções
-            </Link>
-            <Link to="/sobre" className="text-lumenhaus-black hover:text-lumenhaus-green transition-colors">
-              Sobre
-            </Link>
-            <Link to="/contato" className="text-lumenhaus-black hover:text-lumenhaus-green transition-colors">
-              Contato
-            </Link>
-          </nav>
-
-          {/* Desktop Icons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button 
-              onClick={() => setShowSearch(!showSearch)} 
-              className="p-2 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-full transition-colors"
-            >
-              <Search size={20} className="text-lumenhaus-black" />
-            </button>
-            <Link to="/login" className="p-2 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-full transition-colors">
-              <User size={20} className="text-lumenhaus-black" />
-            </Link>
-            <Link to="/carrinho" className="p-2 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-full transition-colors">
-              <ShoppingCart size={20} className="text-lumenhaus-black" />
-            </Link>
+          <div className="flex items-center">
+            <div className="w-10 h-10 bg-mixvinicius-green rounded-full flex items-center justify-center text-white mr-2">
+              <span className="font-bold">MV</span>
+            </div>
+            <span className="text-xl font-bold text-mixvinicius-green-dark font-nunito">MixVinicius</span>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-3 md:hidden">
-            <Link to="/carrinho" className="p-2">
-              <ShoppingCart size={20} className="text-lumenhaus-black" />
-            </Link>
-            <button 
-              onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="p-2"
+          {/* Search Bar - Hidden on Mobile */}
+          <div className="hidden md:flex items-center flex-1 max-w-md mx-4">
+            <div className="relative w-full">
+              <input
+                type="text"
+                placeholder="Buscar produtos..."
+                className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-mixvinicius-green"
+              />
+              <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-mixvinicius-green">
+                <Search className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#" className="text-gray-700 hover:text-mixvinicius-green flex items-center">
+              <User className="h-5 w-5 mr-1" />
+              <span>Entrar</span>
+            </a>
+            <a href="#" className="flex items-center text-gray-700 hover:text-mixvinicius-green relative">
+              <ShoppingCart className="h-5 w-5 mr-1" />
+              <span>Carrinho</span>
+              <span className="absolute -top-2 -right-2 bg-mixvinicius-orange text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                0
+              </span>
+            </a>
+          </nav>
+
+          {/* Mobile Nav Trigger */}
+          <div className="flex items-center md:hidden">
+            <a href="#" className="mr-4 text-gray-700 relative">
+              <ShoppingCart className="h-5 w-5" />
+              <span className="absolute -top-2 -right-2 bg-mixvinicius-orange text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                0
+              </span>
+            </a>
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700"
+              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
-              <Menu size={24} className="text-lumenhaus-black" />
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
-        {/* Search Bar */}
-        {showSearch && (
-          <div className="py-4 animate-fade-in">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-lumenhaus-black opacity-70" size={18} />
-              <Input 
-                placeholder="Buscar produtos..." 
-                className="w-full pl-10 py-2 rounded-full border-lumenhaus-gray focus:border-lumenhaus-green"
-                autoFocus
-              />
-            </div>
+        {/* Search Bar on Mobile */}
+        <div className="pb-3 pt-1 md:hidden">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Buscar produtos..."
+              className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-mixvinicius-green text-sm"
+            />
+            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <Search className="h-4 w-4" />
+            </button>
           </div>
-        )}
-
-        {/* Mobile Menu */}
-        {showMobileMenu && (
-          <div className="md:hidden pt-4 pb-3 border-t border-lumenhaus-gray animate-fade-in">
-            <div className="flex flex-col space-y-3">
-              <Link to="/" className="py-2 px-4 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-md">
-                Home
-              </Link>
-              <Link to="/produtos" className="py-2 px-4 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-md">
-                Produtos
-              </Link>
-              <Link to="/colecoes" className="py-2 px-4 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-md">
-                Coleções
-              </Link>
-              <Link to="/sobre" className="py-2 px-4 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-md">
-                Sobre
-              </Link>
-              <Link to="/contato" className="py-2 px-4 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-md">
-                Contato
-              </Link>
-              <Link to="/login" className="py-2 px-4 hover:bg-lumenhaus-gray hover:bg-opacity-20 rounded-md flex items-center">
-                <User size={18} className="mr-2" />
-                Login / Cadastro
-              </Link>
-              <div className="pt-2">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-lumenhaus-black opacity-70" size={18} />
-                  <Input 
-                    placeholder="Buscar produtos..." 
-                    className="w-full pl-10 py-2 rounded-full border-lumenhaus-gray focus:border-lumenhaus-green"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 py-3 animate-fade-in">
+          <div className="container mx-auto px-4">
+            <nav className="flex flex-col space-y-3">
+              <a href="#" className="flex items-center py-2 px-3 rounded-lg hover:bg-gray-100">
+                <User className="h-5 w-5 mr-3 text-mixvinicius-green" />
+                <span>Minha Conta</span>
+              </a>
+              <a href="#" className="flex items-center py-2 px-3 rounded-lg hover:bg-gray-100">
+                <ShoppingCart className="h-5 w-5 mr-3 text-mixvinicius-green" />
+                <span>Meu Carrinho</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
