@@ -48,8 +48,8 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-4">Contato</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>Rua das Hortênsias, 123</li>
-              <li>Bairro Jardim, São Paulo/SP</li>
+              <li>Av. Mascarenhas de Morais, 3905.</li>
+              <li>51150-003</li>
               <li>contato@mixvinicius.com.br</li>
               <li>(11) 99999-9999</li>
             </ul>
