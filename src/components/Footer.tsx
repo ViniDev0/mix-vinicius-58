@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
@@ -9,10 +8,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1">
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-mixvinicius-green rounded-full flex items-center justify-center text-white mr-3">
-                <span className="font-bold">MV</span>
-              </div>
-              <h3 className="text-xl font-bold text-mixvinicius-green-dark">MixVinicius</h3>
+              <img 
+                src="/lovable-uploads/063cf853-a110-4080-8401-5f71622fdccd.png" 
+                alt="MixVinicius Logo" 
+                className="h-12 w-auto mr-3" 
+              />
             </div>
             <p className="text-gray-600 text-sm mb-4">
               Seu mercadinho digital de bairro, unindo praticidade e proximidade.
