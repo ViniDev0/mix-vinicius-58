@@ -17,9 +17,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/063cf853-a110-4080-8401-5f71622fdccd.png" 
+              src="/lovable-uploads/eff02627-dbd8-449f-b7ae-86b8a97f2d72.png" 
               alt="MixVinicius Logo" 
-              className="h-10 w-auto mr-2"
+              className="h-12 w-auto mr-2"
             />
           </div>
 
