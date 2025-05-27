@@ -1,18 +1,12 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-white border-t border-gray-200">
+  return <footer className="bg-white border-t border-gray-200">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1">
             <div className="flex items-center mb-4">
-              <img 
-                src="/lovable-uploads/063cf853-a110-4080-8401-5f71622fdccd.png" 
-                alt="MixVinicius Logo" 
-                className="h-12 w-auto mr-3" 
-              />
+              <img alt="MixVinicius Logo" src="/lovable-uploads/02efc16f-0127-4b42-9fbd-5e78f920a2ca.png" className="h-24 w-auto mr-3" />
             </div>
             <p className="text-gray-600 text-sm mb-4">
               Seu mercadinho digital de bairro, unindo praticidade e proximidade.
@@ -66,8 +60,6 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} MixVinicius. Todos os direitos reservados.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
