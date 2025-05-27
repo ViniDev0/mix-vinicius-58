@@ -20,7 +20,7 @@ const getCategoryIcon = (iconName: string) => {
 const CategoryNavigation = () => {
   return <section className="py-8 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-nunito font-bold mb-6 text-mixvinicius-green-dark text-center">CATEGORIAS</h2>
+        <h2 className="font-nunito font-bold mb-6 text-mixvinicius-green-dark text-center text-4xl">CATEGORIAS</h2>
         
         <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
           {categories.map(category => <a key={category.id} href={`#${category.name.toLowerCase()}`} className="flex flex-col items-center p-3 rounded-lg transition-all hover:bg-mixvinicius-green hover:bg-opacity-10">
