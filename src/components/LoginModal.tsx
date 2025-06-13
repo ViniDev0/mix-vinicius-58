@@ -32,21 +32,38 @@ const LoginModal = ({ children }: LoginModalProps) => {
     }
 
     const url = isLogin
-      ? 'https://sua-api.com/login'
-      : 'https://sua-api.com/register';
-
+      ? 'http://127.0.0.1:8000/login'
+      : 'http://127.0.0.1:8000/register';
     try {
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(
+    isLogin
+      ? { email, password } // se for login, envia só isso
+      : { email, password, confirm_password: confirmPassword } // se for cadastro, envia o campo extra
+  ),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        toast.error(data.detail || 'Erro ao fazer login');
-        return;
+        const detail = data.detail;
+
+  // Se for string, mostra direto
+  if (typeof detail === 'string') {
+    toast.error(detail);
+  }
+  // Se for array ou objeto (como o erro diz), mostra a primeira mensagem
+  else if (Array.isArray(detail) && detail.length > 0 && detail[0].msg) {
+    toast.error(detail[0].msg);
+  }
+  // Fallback genérico
+  else {
+    toast.error('Erro ao fazer login');
+  }
+
+  return;
       }
 
       toast.success(data.msg || 'Login realizado');
